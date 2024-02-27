@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Book List</title>
+        <style>
+            body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            }
+
+            table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }
+
+            th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            }
+
+            th {
+            background-color: #007bff;
+            color: #fff;
+            text-transform: uppercase;
+            }
+
+            tr:nth-child(even) {
+            background-color: #f2f2f2;
+            }
+
+            tr:hover {
+            background-color: #ddd;
+            }
+
+            .pagination {
+            margin-top: 20px;
+            text-align: center;
+            }
+
+            .pagination a {
+            color: #007bff;
+            text-decoration: none;
+            padding: 8px 16px;
+            border: 1px solid #007bff;
+            border-radius: 4px;
+            margin: 0 4px;
+            }
+
+            .pagination a:hover {
+            background-color: #007bff;
+            color: #fff;
+            }
+        </style>
+    </head>
+
+    <body>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Year</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @books.each do |book| %>
+                <tr>
+                    <td><%= book.title %></td>
+                    <td><%= book.author.name %></td>
+                    <td><%= book.year %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+
+    <div class="pagination">
+        <%= paginate @books %>
+    </div>
+
+    </body>
+</html>
